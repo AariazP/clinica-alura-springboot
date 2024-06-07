@@ -26,6 +26,6 @@ public record CrearMedicoDTO(
         DireccionDTO direccion
 ) {
     public Medico toEntity() {
-        return new Medico(null, nombre, email, documento, especialidad, direccion.toEntity());
+        return new Medico(null, nombre, email, documento, especialidad, direccion.toEntity(), true);
     }
 }

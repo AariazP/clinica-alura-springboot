@@ -29,4 +29,6 @@ public class Medico {
 
     @Embedded
     private Direccion direccion;
+
+    private Boolean activo;
 }
