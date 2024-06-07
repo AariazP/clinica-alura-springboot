@@ -32,4 +32,9 @@ public class MedicoController {
     public Long updateMedico(@RequestBody ActualizarMedicoDTO medicoDTO) {
         return medicoService.updateMedico(medicoDTO);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteMedico(@PathVariable Long id) {
+        return medicoService.deleteMedico(id);
+    }
 }

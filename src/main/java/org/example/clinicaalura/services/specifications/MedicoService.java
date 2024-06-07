@@ -13,4 +13,6 @@ public interface MedicoService {
     Page<MedicoDTO> listMedicos(Pageable pageable);
 
     Long updateMedico(ActualizarMedicoDTO medicoDTO);
+
+    String deleteMedico(Long id);
 }

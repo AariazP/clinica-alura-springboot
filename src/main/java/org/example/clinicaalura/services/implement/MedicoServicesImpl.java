@@ -25,7 +25,7 @@ public class MedicoServicesImpl implements MedicoService {
 
     @Override
     public Page<MedicoDTO> listMedicos(Pageable pageable) {
-       return medicoRepository.findAll(pageable).map(MedicoDTO::fromEntity);
+       return medicoRepository.findByActivoTrue(pageable).map(MedicoDTO::fromEntity);
     }
 
     @Override
@@ -38,5 +38,14 @@ public class MedicoServicesImpl implements MedicoService {
 
         return medicoRepository.save(medico).getId();
 
+    }
+
+
+    @Override
+    public String deleteMedico(Long id) {
+        Medico medico = medicoRepository.findById(id).orElseThrow();
+        medico.setActivo(false);
+        medicoRepository.save(medico);
+        return "Medico eliminado";
     }
 }
