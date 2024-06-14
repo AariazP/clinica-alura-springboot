@@ -8,11 +8,13 @@ import org.springframework.data.domain.Pageable;
 
 public interface MedicoService {
 
-    Long saveMedico( CrearMedicoDTO medicoDTO);
+    MedicoDTO saveMedico(CrearMedicoDTO medicoDTO);
 
     Page<MedicoDTO> listMedicos(Pageable pageable);
 
     Long updateMedico(ActualizarMedicoDTO medicoDTO);
 
     String deleteMedico(Long id);
+
+    MedicoDTO findById(Long id);
 }

@@ -9,9 +9,7 @@ import org.example.clinicaalura.repositories.MedicoRepository;
 import org.example.clinicaalura.services.specifications.MedicoService;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-
 import org.springframework.data.domain.Pageable;
-import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -19,8 +17,8 @@ public class MedicoServicesImpl implements MedicoService {
 
     private final MedicoRepository medicoRepository;
 
-    public Long saveMedico( CrearMedicoDTO medicoDTO) {
-        return medicoRepository.save(medicoDTO.toEntity()).getId();
+    public MedicoDTO saveMedico( CrearMedicoDTO medicoDTO) {
+        return new MedicoDTO(medicoRepository.save(medicoDTO.toEntity()));
     }
 
     @Override
@@ -47,5 +45,10 @@ public class MedicoServicesImpl implements MedicoService {
         medico.setActivo(false);
         medicoRepository.save(medico);
         return "Medico eliminado";
+    }
+
+    @Override
+    public MedicoDTO findById(Long id) {
+        return new MedicoDTO(medicoRepository.findById(id).orElseThrow());
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 @ControllerAdvice
@@ -27,6 +28,11 @@ public class BadRequestExceptionHandler {
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<ValidationError> handleDataIntegrityViolationException(DataIntegrityViolationException exception) {
         return buildErrorResponse("El email ya está registrado");
+    }
+
+    @ExceptionHandler(NoSuchElementException.class)
+    public ResponseEntity<ValidationError> handleNoMedicoFound(NoSuchElementException exception){
+        return buildErrorResponse("No se encuentra el médico");
     }
 
     private ResponseEntity<ValidationError> buildErrorResponse(String errorMessage) {

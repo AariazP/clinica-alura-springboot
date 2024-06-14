@@ -10,6 +10,10 @@ public record MedicoDTO(
         String email
 ) {
 
+    public MedicoDTO(Medico medico){
+        this(medico.getId(),medico.getNombre(), medico.getEspecialidad().name(), medico.getDocumento(), medico.getEmail());
+    }
+
     public static MedicoDTO fromEntity(Medico medico) {
         return new MedicoDTO(medico.getId(),medico.getNombre(), medico.getEspecialidad().name(), medico.getDocumento(), medico.getEmail());
     }

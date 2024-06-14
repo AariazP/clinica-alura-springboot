@@ -10,5 +10,6 @@ public enum Especialidad {
     UROLOGIA("urologia");
 
     Especialidad(String descripcion) {
+
     }
 }
